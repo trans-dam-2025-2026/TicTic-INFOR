@@ -11,11 +11,14 @@ class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: DecoratedBox( // Pour initier le fond
-        decoration: BoxDecoration( // Pour mettre un fond type couleur ou autre
-          image: DecorationImage( // Pour mettre une image
-              image: AssetImage('assets/img/back1.png'), // Le chemin de l'image
-              fit: BoxFit.cover // La façon dont l'image doit fit dans l'écran
+      body: DecoratedBox(
+        // Pour initier le fond
+        decoration: BoxDecoration(
+          // Pour mettre un fond type couleur ou autre
+          image: DecorationImage(
+            // Pour mettre une image
+            image: AssetImage('assets/img/back1.png'), // Le chemin de l'image
+            fit: BoxFit.cover, // La façon dont l'image doit fit dans l'écran
           ),
         ),
         child: Column(
@@ -23,8 +26,8 @@ class WelcomeScreen extends StatelessWidget {
             Align(
               alignment: Alignment.topCenter,
               child: SvgPicture.asset(
-                  'assets/icons/logo.svg',
-                  width: MediaQuery.of(context).size.width * kLogoRatioPercentage,
+                'assets/icons/logo.svg',
+                width: MediaQuery.of(context).size.width * kLogoRatioPercentage,
               ),
             ),
             Carousel(),
@@ -65,22 +68,44 @@ class _CarouselState extends State<Carousel> {
         SizedBox(
           height: kCarouselHeight,
           child: PageView.builder(
-              itemBuilder: (context, i) {
-                return Text(_items[i]);
-              }
+            scrollDirection: Axis.horizontal,
+            controller: controller,
+            itemCount: _items.length,
+            itemBuilder: (context, i) {
+              return Text(_items[i]);
+            },
+            onPageChanged: (i) {
+              setState(() {
+                _currentIndex = i;
+              });
+            },
           ),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             for (int i = 0; i < _items.length; i++)
-              Container(
-                color: _currentIndex == i ? kCarouselActiveLine : kCarouselInactiveLine,
-                height: 3,
-                width: (MediaQuery.of(context).size.width / _items.length) - (kPaddingHorizontal * 2), // Calculer la width
-              )
+              GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: () {
+                  controller.animateToPage(
+                    i,
+                    duration: const Duration(seconds: 1),
+                    curve: Curves.easeInOut,
+                  );
+                },
+                child: Container(
+                  color: _currentIndex == i
+                      ? kCarouselActiveLine
+                      : kCarouselInactiveLine,
+                  height: 3,
+                  width:
+                      (MediaQuery.of(context).size.width / _items.length) -
+                      (kPaddingHorizontal * 2),
+                ),
+              ),
           ],
-        )
+        ),
       ],
     );
   }
