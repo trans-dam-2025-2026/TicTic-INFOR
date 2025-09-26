@@ -1,0 +1,1 @@
+const double kCarouselHeight = 60.0;

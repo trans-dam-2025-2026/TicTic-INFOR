@@ -1,0 +1,1 @@
+const double kPaddingHorizontal = 18.0;
