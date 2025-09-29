@@ -8,13 +8,15 @@ class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          LogoWelcome(),
-          Carousel(),
-        ],
+      body: DecoratedBox(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/back1.png'),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Column(children: [LogoWelcome(), Carousel()]),
       ),
     );
   }
 }
-
