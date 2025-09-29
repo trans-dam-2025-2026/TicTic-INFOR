@@ -9,20 +9,24 @@ class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Center(
-            child: SvgPicture.asset(
+      body: DecoratedBox(
+        decoration: BoxDecoration(
+          image: DecorationImage(image: AssetImage('assets/images/back1.png'), fit: BoxFit.cover),
+        ),
+        child: Column(
+          children: [
+            Center(
+              child: SvgPicture.asset(
                 'assets/icons/logo.svg',
                 width: MediaQuery.of(context).size.width / kLogoWelcomeWidth,
+              ),
             ),
-          ),
-          Carousel(),
-          // Carousel ou le slider
-          // Button
-          // Row(Ligne + texte + ligne)
-          // Row(Button, Button)
-        ],
+            Carousel(),
+            // Button
+            // Row(Ligne + texte + ligne)
+            // Row(Button, Button)
+          ],
+        ),
       ),
     );
   }

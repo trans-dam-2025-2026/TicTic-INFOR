@@ -1,2 +1,3 @@
 const int kLogoWelcomeWidth = 3;
-const double kCarouselHeight = 60;
+const double kCarouselHeight = 60.0;
+const double kCarouselLineHeight = 3.0;
