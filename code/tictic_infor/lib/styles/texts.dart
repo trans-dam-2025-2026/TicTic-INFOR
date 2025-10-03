@@ -8,3 +8,17 @@ const TextStyle kCarouselText = TextStyle(
   fontStyle: FontStyle.italic,
   color: kMainColor,
 );
+
+const TextStyle kMainButtonText = TextStyle(
+    color: kWhiteColor,
+    fontSize: 18,
+    fontFamily: 'Avenir',
+    fontWeight: FontWeight.w500
+);
+
+const TextStyle kSecondaryButtonText = TextStyle(
+    color: kMainButtonColor,
+    fontSize: 18,
+    fontFamily: 'Avenir',
+    fontWeight: FontWeight.w500
+);

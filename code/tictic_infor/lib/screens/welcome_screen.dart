@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:tictic_infor/screens/home_screen.dart';
+import 'package:tictic_infor/screens/login_screen.dart';
+import 'package:tictic_infor/screens/register_screen.dart';
 import 'package:tictic_infor/styles/colors.dart';
 import 'package:tictic_infor/styles/images.dart';
 import 'package:tictic_infor/styles/sizes.dart';
 import 'package:tictic_infor/styles/spacings.dart';
 import 'package:tictic_infor/styles/texts.dart';
+import 'package:tictic_infor/widgets/button.dart';
+import 'package:tictic_infor/widgets/carousel.dart';
+import 'package:tictic_infor/widgets/line.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
+
+  static const String routeName = '/';
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +32,7 @@ class WelcomeScreen extends StatelessWidget {
         ),
         child: Column(
           children: [
+            Spacer(),
             Align(
               alignment: Alignment.topCenter,
               child: SvgPicture.asset(
@@ -31,91 +40,44 @@ class WelcomeScreen extends StatelessWidget {
                 width: MediaQuery.of(context).size.width * kLogoRatioPercentage,
               ),
             ),
+            Spacer(),
             Carousel(),
-            // Carousel
-            // main Button
-            // Line
-            // ROW -> Double button
+            Spacer(),
+            Button(
+              onTap: () => {
+                Navigator.pushNamed(context, HomeScreen.routeName)
+              },
+              label: 'Continuer sans compte',
+              status: 'main',
+            ),
+            Line(),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Button(
+                    onTap: () => {
+                      Navigator.pushNamed(context, LoginScreen.routeName)
+                    },
+                    label: 'Se connecter',
+                    status: 'secondary',
+                  ),
+                  SizedBox(width: 24,),
+                  Button(
+                    onTap: () => {
+                      Navigator.pushNamed(context, RegisterScreen.routeName)
+                    },
+                    label: 'Créer un compte',
+                    status: 'secondary',
+                  ),
+                ],
+              ),
+            ),
+            Spacer(),
           ],
         ),
       ),
-    );
-  }
-}
-
-class Carousel extends StatefulWidget {
-  const Carousel({super.key});
-
-  @override
-  State<Carousel> createState() => _CarouselState();
-}
-
-class _CarouselState extends State<Carousel> {
-  final _items = [
-    '0Gérez votre budget!',
-    '1L’harmonie financière dans vos groupes, en toute simplicité !.',
-    '2L’harmonie financière dans vos groupes, en toute simplicité !.',
-    '3L’harmonie financière dans vos groupes, en toute simplicité !.',
-  ];
-
-  final PageController controller = PageController();
-
-  int _currentIndex = 0;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(
-          height: kCarouselHeight,
-          child: PageView.builder(
-            scrollDirection: Axis.horizontal,
-            controller: controller,
-            itemCount: _items.length,
-            itemBuilder: (context, i) {
-              return Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: kPaddingHorizontalL,
-                ),
-                child: Text(_items[i], style: kCarouselText, textAlign: TextAlign.center,),
-              );
-            },
-            onPageChanged: (i) {
-              setState(() {
-                _currentIndex = i;
-              });
-            },
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: kPaddingHorizontalL),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              for (int i = 0; i < _items.length; i++)
-                GestureDetector(
-                  behavior: HitTestBehavior.opaque,
-                  onTap: () {
-                    controller.animateToPage(
-                      i,
-                      duration: const Duration(seconds: 1),
-                      curve: Curves.easeInOut,
-                    );
-                  },
-                  child: Container(
-                    color: _currentIndex == i
-                        ? kCarouselActiveLine
-                        : kCarouselInactiveLine,
-                    height: 3,
-                    width:
-                        (MediaQuery.of(context).size.width / _items.length) -
-                        (kPaddingHorizontal * 2),
-                  ),
-                ),
-            ],
-          ),
-        ),
-      ],
     );
   }
 }
