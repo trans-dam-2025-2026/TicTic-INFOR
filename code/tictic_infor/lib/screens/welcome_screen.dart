@@ -8,7 +8,7 @@ import 'package:tictic_infor/styles/images.dart';
 import 'package:tictic_infor/styles/sizes.dart';
 import 'package:tictic_infor/styles/spacings.dart';
 import 'package:tictic_infor/styles/texts.dart';
-import 'package:tictic_infor/widgets/button.dart';
+import 'package:tictic_infor/widgets/main_button.dart';
 import 'package:tictic_infor/widgets/carousel.dart';
 import 'package:tictic_infor/widgets/line.dart';
 
@@ -43,7 +43,7 @@ class WelcomeScreen extends StatelessWidget {
             Spacer(),
             Carousel(),
             Spacer(),
-            Button(
+            MainButton(
               onTap: () => {
                 Navigator.pushNamed(context, HomeScreen.routeName)
               },
@@ -56,7 +56,7 @@ class WelcomeScreen extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Button(
+                  MainButton(
                     onTap: () => {
                       Navigator.pushNamed(context, LoginScreen.routeName)
                     },
@@ -64,7 +64,7 @@ class WelcomeScreen extends StatelessWidget {
                     status: 'secondary',
                   ),
                   SizedBox(width: 24,),
-                  Button(
+                  MainButton(
                     onTap: () => {
                       Navigator.pushNamed(context, RegisterScreen.routeName)
                     },

@@ -5,8 +5,8 @@ import 'package:tictic_infor/styles/sizes.dart';
 import 'package:tictic_infor/styles/spacings.dart';
 import 'package:tictic_infor/styles/texts.dart';
 
-class Button extends StatelessWidget {
-  const Button({
+class MainButton extends StatelessWidget {
+  const MainButton({
     super.key,
     required this.onTap,
     required this.label,
