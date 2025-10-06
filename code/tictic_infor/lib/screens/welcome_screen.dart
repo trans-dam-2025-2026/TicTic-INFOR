@@ -57,7 +57,8 @@ class WelcomeScreen extends StatelessWidget {
                     children: [
                       Button(
                         onTap: () => {
-                          Navigator.pushNamed(context, LoginScreen.routeName)
+                          //Navigator.pushNamed(context, LoginScreen.routeName)
+                          Navigator.pop(context)
                         },
                         label: 'Se connecter',
                         status: 'secondary',
