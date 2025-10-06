@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tictic_infor/screens/login_screen.dart';
+import 'package:tictic_infor/screens/register_screen.dart';
 import 'package:tictic_infor/screens/welcome_screen.dart';
 
 void main() {
@@ -15,6 +17,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
+      routes: <String, WidgetBuilder>{
+        '/': (BuildContext context) => WelcomeScreen(),
+        '/login': (BuildContext context) => LoginScreen(),
+        '/register': (BuildContext context) => RegisterScreen(),
+      },
       initialRoute: WelcomeScreen.routeName,
     );
   }
