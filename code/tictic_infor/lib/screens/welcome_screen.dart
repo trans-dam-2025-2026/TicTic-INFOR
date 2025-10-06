@@ -5,6 +5,8 @@ import 'package:tictic_infor/widgets/logo_welcome.dart';
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
 
+  static const String routeName = '/';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
