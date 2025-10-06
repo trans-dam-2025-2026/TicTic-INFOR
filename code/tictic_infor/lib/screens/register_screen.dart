@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:tictic_infor/screens/home_screen.dart';
+import 'package:tictic_infor/screens/login_screen.dart';
 import 'package:tictic_infor/styles/colors.dart';
 import 'package:tictic_infor/styles/images.dart';
 import 'package:tictic_infor/styles/spacings.dart';
+import 'package:tictic_infor/widgets/main_button.dart';
+import 'package:tictic_infor/widgets/password_input.dart';
+import 'package:tictic_infor/widgets/text_input.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -34,6 +39,24 @@ class _RegisterScreenState extends State<RegisterScreen> {
           child: Column(
             children: [
               // Button back
+              Padding(
+                padding: const EdgeInsets.all(kPaddingHorizontal),
+                child: Align(
+                  alignment: Alignment.topLeft,
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Container(
+                      color: kWhiteColor,
+                      child: Padding(
+                        padding: const EdgeInsets.all(kHorizontalPadding),
+                        child: Icon(Icons.arrow_back),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
               Align(
                 alignment: Alignment.topCenter,
                 child: SvgPicture.asset(
@@ -43,30 +66,48 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: kPaddingHorizontalL),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: kPaddingHorizontalL,
+                ),
                 child: Form(
                   key: _formKey,
-                  child: Column(children: [
-                    TextFormField(
-                      controller: firstNameController,
-                      decoration: InputDecoration(
+                  child: Column(
+                    children: [
+                      TextInput(
+                        controller: firstNameController,
                         labelText: 'Prénom *',
-                        labelStyle: TextStyle(
-                          fontSize: kDefaultFontSize
-                        ),
                         hintText: 'Ex: Marc',
-                        border: const OutlineInputBorder(),
-                        filled: true,
-                        fillColor: kWhiteColor,
-                        floatingLabelBehavior: FloatingLabelBehavior.always,
                       ),
-                    ),
-                  ]),
+                      TextInput(
+                        controller: lastNameController,
+                        labelText: 'Nom *',
+                        hintText: 'Ex: Caillou',
+                      ),
+                      TextInput(
+                        controller: mailController,
+                        labelText: 'Adresse mail *',
+                        hintText: 'Ex: johndoe@example.com',
+                      ),
+                      PasswordInput(controller: passwordController),
+                      MainButton(
+                        onTap: () {
+                          Navigator.pushNamed(context, HomeScreen.routeName);
+                        },
+                        label: 'S’inscrire',
+                        status: 'main',
+                      ),
+                    ],
+                  ),
                 ),
               ),
-              // FORM -> TextField
-              // Button -> Soumettre le form
-              // Text -> Je m'inscris
+
+              Text('J’ai déjà un compte.'),
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, LoginScreen.routeName);
+                },
+                child: Text('Je me connecte'),
+              ),
             ],
           ),
         ),
