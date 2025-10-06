@@ -26,7 +26,7 @@ class WelcomeScreen extends StatelessWidget {
           // Pour mettre un fond type couleur ou autre
           image: DecorationImage(
             // Pour mettre une image
-            image: AssetImage('assets/img/back1.png'), // Le chemin de l'image
+            image: AssetImage('assets/images/back1.png'), // Le chemin de l'image
             fit: BoxFit.cover, // La façon dont l'image doit fit dans l'écran
           ),
         ),
@@ -58,7 +58,7 @@ class WelcomeScreen extends StatelessWidget {
                 children: [
                   MainButton(
                     onTap: () => {
-                      //Navigator.pushNamed(context, LoginScreen.routeName)
+                      Navigator.pushNamed(context, LoginScreen.routeName)
                     },
                     label: 'Se connecter',
                     status: 'secondary',
@@ -66,7 +66,7 @@ class WelcomeScreen extends StatelessWidget {
                   SizedBox(width: 24,),
                   MainButton(
                     onTap: () => {
-                      //Navigator.pushNamed(context, RegisterScreen.routeName)
+                      Navigator.pushNamed(context, RegisterScreen.routeName)
                     },
                     label: 'Créer un compte',
                     status: 'secondary',
