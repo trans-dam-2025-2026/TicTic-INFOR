@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:tictic_infor/styles/colors.dart';
 import 'package:tictic_infor/styles/images.dart';
+import 'package:tictic_infor/styles/spacings.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -13,6 +15,10 @@ class RegisterScreen extends StatefulWidget {
 
 class _RegisterScreenState extends State<RegisterScreen> {
   final GlobalKey _formKey = GlobalKey<FormState>();
+  final TextEditingController firstNameController = TextEditingController();
+  final TextEditingController lastNameController = TextEditingController();
+  final TextEditingController mailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -36,11 +42,27 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       MediaQuery.of(context).size.width * kLogoRatioPercentage,
                 ),
               ),
-              Form(
-                key: _formKey,
-                child: Column(children: [
-
-                ]),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: kPaddingHorizontalL),
+                child: Form(
+                  key: _formKey,
+                  child: Column(children: [
+                    TextFormField(
+                      controller: firstNameController,
+                      decoration: InputDecoration(
+                        labelText: 'Prénom *',
+                        labelStyle: TextStyle(
+                          fontSize: kDefaultFontSize
+                        ),
+                        hintText: 'Ex: Marc',
+                        border: const OutlineInputBorder(),
+                        filled: true,
+                        fillColor: kWhiteColor,
+                        floatingLabelBehavior: FloatingLabelBehavior.always,
+                      ),
+                    ),
+                  ]),
+                ),
               ),
               // FORM -> TextField
               // Button -> Soumettre le form
