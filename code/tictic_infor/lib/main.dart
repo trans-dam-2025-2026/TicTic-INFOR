@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tictic_infor/routes/router.dart';
 import 'package:tictic_infor/screens/welcome_screen.dart';
 
 void main() {
@@ -15,7 +16,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: WelcomeScreen(),
+      routes: router,
+      initialRoute: WelcomeScreen.routeName,
     );
   }
 }
