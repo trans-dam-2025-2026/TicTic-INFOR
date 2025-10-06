@@ -1,0 +1,1 @@
+const double kVerticalSpace = 24.0;

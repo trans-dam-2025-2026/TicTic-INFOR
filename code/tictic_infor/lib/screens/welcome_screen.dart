@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:tictic_infor/screens/home_screen.dart';
-import 'package:tictic_infor/screens/login_screen.dart';
 import 'package:tictic_infor/screens/register_screen.dart';
-
-import '../widgets/button.dart';
-import '../widgets/carousel.dart';
-import '../widgets/line.dart';
+import 'package:tictic_infor/styles/sizes.dart';
+import 'package:tictic_infor/styles/spacings.dart';
+import 'package:tictic_infor/widgets/button.dart';
+import 'package:tictic_infor/widgets/carousel.dart';
+import 'package:tictic_infor/widgets/line.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -31,7 +30,7 @@ class WelcomeScreen extends StatelessWidget {
                 Spacer(),
                 Padding(
                   padding: EdgeInsets.symmetric(
-                    horizontal: 16,
+                    horizontal: kHorizontalPadding,
                   ),
                   child: SvgPicture.asset(
                     'assets/icons/logo.svg',
@@ -63,7 +62,7 @@ class WelcomeScreen extends StatelessWidget {
                         label: 'Se connecter',
                         status: 'secondary',
                       ),
-                      SizedBox(width: 24,),
+                      SizedBox(width: kVerticalSpace,),
                       Button(
                         onTap: () => {
                           Navigator.pushNamed(context, RegisterScreen.routeName)
