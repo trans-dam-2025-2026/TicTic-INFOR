@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tictic_infor/styles/colors.dart';
+import 'package:tictic_infor/styles/others.dart';
 import 'package:tictic_infor/styles/spacings.dart';
+import 'package:tictic_infor/styles/texts.dart';
 
 class TextInput extends StatelessWidget {
   final TextEditingController controller;
@@ -25,11 +27,11 @@ class TextInput extends StatelessWidget {
         keyboardType: keyboardType,
         decoration: InputDecoration(
           labelText: labelText,
-          labelStyle: TextStyle(
-              fontSize: kDefaultFontSize
-          ),
+          labelStyle: kLinkToTextLabel,
           hintText: hintText,
-          border: const OutlineInputBorder(),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(kBorderRadiusValue)
+          ),
           filled: true,
           fillColor: kWhiteColor,
           floatingLabelBehavior: FloatingLabelBehavior.always,

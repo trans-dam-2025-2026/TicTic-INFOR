@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const double kBorderRadiusValue = 24.0;
+const double kBorderRadiusValue = 48.0;
 
 final kShadow = BoxShadow(
   color: Colors.black.withValues(alpha: 0.16),

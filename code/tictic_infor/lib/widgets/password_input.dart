@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tictic_infor/styles/colors.dart';
+import 'package:tictic_infor/styles/others.dart';
 import 'package:tictic_infor/styles/spacings.dart';
+import 'package:tictic_infor/styles/texts.dart';
 
 class PasswordInput extends StatefulWidget {
   final TextEditingController controller;
@@ -27,11 +29,11 @@ class _PasswordInputState extends State<PasswordInput> {
         keyboardType: TextInputType.visiblePassword,
         decoration: InputDecoration(
             labelText: 'Mot de passe *',
-            labelStyle: TextStyle(
-                fontSize: kDefaultFontSize
-            ),
+            labelStyle: kLinkToTextLabel,
             hintText: '***********',
-            border: const OutlineInputBorder(),
+            border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(kBorderRadiusValue)
+            ),
             filled: true,
             fillColor: kWhiteColor,
             floatingLabelBehavior: FloatingLabelBehavior.always,

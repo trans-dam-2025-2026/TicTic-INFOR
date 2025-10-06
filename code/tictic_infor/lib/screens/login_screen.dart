@@ -4,9 +4,13 @@ import 'package:tictic_infor/screens/home_screen.dart';
 import 'package:tictic_infor/styles/colors.dart';
 import 'package:tictic_infor/styles/images.dart';
 import 'package:tictic_infor/styles/spacings.dart';
+import 'package:tictic_infor/widgets/link_to_route.dart';
+import 'package:tictic_infor/widgets/login_form.dart';
+import 'package:tictic_infor/widgets/logo_svg_click.dart';
 import 'package:tictic_infor/widgets/main_button.dart';
 import 'package:tictic_infor/widgets/password_input.dart';
 import 'package:tictic_infor/widgets/text_input.dart';
+import 'package:tictic_infor/widgets/w_back_button.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -34,66 +38,15 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
         child: SafeArea(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              // Button back
-              Padding(
-                padding: const EdgeInsets.all(kPaddingHorizontal),
-                child: Align(
-                  alignment: Alignment.topLeft,
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                    child: Container(
-                      color: kWhiteColor,
-                      child: Padding(
-                        padding: const EdgeInsets.all(kHorizontalPadding),
-                        child: Icon(Icons.arrow_back),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              Align(
-                alignment: Alignment.topCenter,
-                child: SvgPicture.asset(
-                  'assets/icons/logo.svg',
-                  width:
-                  MediaQuery.of(context).size.width * kLogoRatioPercentage,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: kPaddingHorizontalL,
-                ),
-                child: Form(
-                  key: _formKey,
-                  child: Column(
-                    children: [
-                      TextInput(
-                        controller: mailController,
-                        labelText: 'Adresse mail *',
-                        hintText: 'Ex: johndoe@example.com',
-                      ),
-                      PasswordInput(controller: passwordController),
-                      MainButton(
-                        onTap: () {
-                          Navigator.pushNamed(context, HomeScreen.routeName);
-                        },
-                        label: 'Se connecter',
-                        status: 'main',
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-
-              Text('Je n’ai pas encore de compte.'),
-              GestureDetector(
-                onTap: () {
-                  Navigator.pushNamed(context, LoginScreen.routeName);
-                },
-                child: Text('Créer mon compte !'),
+              WBackButton(),
+              LogoSvgClick(),
+              LoginForm(formKey: _formKey, mailController: mailController, passwordController: passwordController),
+              LinkToRoute(
+                text: 'Je n’ai pas encore de compte.',
+                label: 'Créer mon compte !',
+                routeName: LoginScreen.routeName,
               ),
             ],
           ),
@@ -102,3 +55,4 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
+
