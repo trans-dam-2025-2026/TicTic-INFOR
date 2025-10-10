@@ -8,6 +8,7 @@ const double kVerticalPaddingL = kVerticalPadding * 2;
 const double kVerticalPaddingLMid = kVerticalPadding * 1.5;
 
 const double kSmallSpace = 12.0;
+const double kMediumSpace = 20.0;
 
 const double kHorizontalPaddingXS = kHorizontalPadding / 4;
 const double kVerticalPaddingXS = kVerticalPadding / 4;

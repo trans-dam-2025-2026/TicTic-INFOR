@@ -7,3 +7,5 @@ const kCarouselActiveLine = Color.fromRGBO(53, 78, 65, 1);
 const kCarouselInactiveLine = Color.fromRGBO(243, 239, 228, 1);
 const kMainButtonColor = Color.fromRGBO(53, 78, 65, 1);
 const kSecondaryButtonColor = Color.fromRGBO(163, 177, 138, 1);
+const kBackgroundColor = Color.fromRGBO(242, 239, 228, 1);
+const kBorderColor = Color.fromRGBO(163, 177, 138, 1);
