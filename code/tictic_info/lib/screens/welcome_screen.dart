@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:tictic_info/styles/size.dart';
+import 'package:tictic_info/widgets/carousel.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -27,15 +28,16 @@ class WelcomeScreen extends StatelessWidget {
                       MediaQuery.of(context).size.width / kLogoWidthSubdiviser,
                 ),
               ),
+              Carousel(),
+              // Carousel
+              // Button
+              // Row -> Line - Text - Line
+              // Row -> Button - Button
             ],
-            // SVG LOGO
-            // Carousel
-            // Button
-            // Row -> Line - Text - Line
-            // Row -> Button - Button
           ),
         ),
       ),
     );
   }
 }
+
