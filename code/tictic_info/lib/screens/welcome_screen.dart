@@ -7,6 +7,14 @@ class WelcomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      body: Column(
+        // SVG LOGO
+        // Carousel
+        // Button
+        // Row -> Line - Text - Line
+        // Row -> Button - Button
+      ),
+    );
   }
 }
