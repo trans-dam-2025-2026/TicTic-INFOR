@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:tictic_info/styles/colors.dart';
+import 'package:tictic_info/styles/size.dart';
+import 'package:tictic_info/styles/spacings.dart';
+import 'package:tictic_info/styles/texts.dart';
 
 class Carousel extends StatefulWidget {
   const Carousel({super.key});
@@ -22,13 +26,18 @@ class _CarouselState extends State<Carousel> {
     return Column(
       children: [
         SizedBox(
-          height: 60,
+          height: kCarouselHeight,
           child: PageView.builder(
             scrollDirection: Axis.horizontal,
             controller: controller,
             itemCount: _items.length,
             itemBuilder: (context, i) {
-              return Text(_items[i]);
+              return Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: kHorizontalPaddingL,
+                ),
+                child: Center(child: Text(_items[i], style: kTextCarousel)),
+              );
             },
             onPageChanged: (i) {
               setState(() {
@@ -42,15 +51,29 @@ class _CarouselState extends State<Carousel> {
           children: [
             for (int i = 0; i < _items.length; i++)
               GestureDetector(
+                behavior: HitTestBehavior.opaque,
                 onTap: () {
-                  controller.animateToPage(i, duration: Duration(seconds: 1), curve: Curves.easeInOut);
+                  controller.animateToPage(
+                    i,
+                    duration: Duration(seconds: 1),
+                    curve: Curves.easeInOut,
+                  );
                 },
-                child: Container(
-                  decoration: BoxDecoration(color: _currentIndex == i ? Colors.red :Colors.blueAccent),
-                  height: 6,
-                  width:
-                      (MediaQuery.of(context).size.width / _items.length) -
-                      18 * 2,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: kHorizontalPadding,
+                  ),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: _currentIndex == i
+                          ? kActiveLine
+                          : kInactiveLine,
+                    ),
+                    height: kCarouselLineHeight,
+                    width:
+                        (MediaQuery.of(context).size.width / _items.length) -
+                        kHorizontalPadding * 2,
+                  ),
                 ),
               ),
           ],
