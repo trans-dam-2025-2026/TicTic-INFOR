@@ -8,3 +8,10 @@ const TextStyle kTextCarousel = TextStyle(
   fontStyle: FontStyle.italic,
   color: kMainColor,
 );
+
+const TextStyle kButtonText = TextStyle(
+  fontSize: 18,
+  fontFamily: 'Montserrat',
+  color: kLightTextColor,
+  fontWeight: FontWeight.w600,
+);

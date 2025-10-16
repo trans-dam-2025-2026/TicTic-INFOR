@@ -65,9 +65,7 @@ class _CarouselState extends State<Carousel> {
                   ),
                   child: Container(
                     decoration: BoxDecoration(
-                      color: _currentIndex == i
-                          ? kActiveLine
-                          : kInactiveLine,
+                      color: _currentIndex == i ? kActiveLine : kInactiveLine,
                     ),
                     height: kCarouselLineHeight,
                     width:

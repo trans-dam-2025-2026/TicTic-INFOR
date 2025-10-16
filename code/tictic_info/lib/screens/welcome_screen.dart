@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:tictic_info/screens/home_screen.dart';
+import 'package:tictic_info/screens/login_screen.dart';
+import 'package:tictic_info/screens/register_screen.dart';
 import 'package:tictic_info/styles/size.dart';
+import 'package:tictic_info/styles/spacings.dart';
+import 'package:tictic_info/widgets/custom_button.dart';
 import 'package:tictic_info/widgets/carousel.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -21,6 +26,7 @@ class WelcomeScreen extends StatelessWidget {
         child: SafeArea(
           child: Column(
             children: [
+              Spacer(),
               Center(
                 child: SvgPicture.asset(
                   'assets/icons/logo.svg',
@@ -28,7 +34,40 @@ class WelcomeScreen extends StatelessWidget {
                       MediaQuery.of(context).size.width / kLogoWidthSubdiviser,
                 ),
               ),
+              Spacer(),
               Carousel(),
+              Spacer(),
+              Center(
+                child: CustomButton(
+                  label: 'Continuer sans compte',
+                  onTap: () {
+                    Navigator.pushNamed(context, HomeScreen.routeName);
+                  },
+                ),
+              ),
+              SingleChildScrollView(
+                child: Row(
+                  children: [
+                    CustomButton(
+                      label: 'Se connecter',
+                      isPrimary: false,
+                      onTap: () {
+                        Navigator.pushNamed(context, LoginScreen.routeName);
+                      },
+                    ),
+                    SizedBox(
+                      width: kHorizontalPaddingL,
+                    ),
+                    CustomButton(
+                      label: 'S’inscrire',
+                      isPrimary: false,
+                      onTap: () {
+                        Navigator.pushNamed(context, RegisterScreen.routeName);
+                      },
+                    ),
+                  ],
+                ),
+              ),
               // Carousel
               // Button
               // Row -> Line - Text - Line
@@ -40,4 +79,3 @@ class WelcomeScreen extends StatelessWidget {
     );
   }
 }
-
