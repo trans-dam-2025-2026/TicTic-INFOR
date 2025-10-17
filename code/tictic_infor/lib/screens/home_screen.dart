@@ -47,10 +47,11 @@ class _HomeScreenState extends State<HomeScreen> {
             ListTile(
               title: GestureDetector(
                 onTap: () async {
-                  await FirebaseAuth.instance.signOut().then((value) => {
-                  Navigator.pushNamed(
-                  context, LoginScreen.routeName)
-                  });
+                  await FirebaseAuth.instance.signOut().then(
+                    (value) => {
+                      Navigator.pushReplacementNamed(context, LoginScreen.routeName),
+                    },
+                  );
                 },
                 child: Text('Je me déconnecte', style: kTextSideBar),
               ),
