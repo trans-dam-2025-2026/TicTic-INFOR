@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:tictic_infor/screens/login_screen.dart';
 import 'package:tictic_infor/styles/colors.dart';
 import 'package:tictic_infor/styles/sizes.dart';
 import 'package:tictic_infor/styles/spacings.dart';
@@ -18,11 +20,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
-  final _items = [
-    'Total à payer',
-    'Total à recevoir',
-    'Dernière transaction',
-  ];
+  final _items = ['Total à payer', 'Total à recevoir', 'Dernière transaction'];
 
   final PageController controller = PageController();
 
@@ -35,17 +33,28 @@ class _HomeScreenState extends State<HomeScreen> {
         child: ListView(
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding, vertical: kVerticalPadding),
-              child: Text('Actions rapides', style: kTitleSideBar,),
+              padding: const EdgeInsets.symmetric(
+                horizontal: kHorizontalPadding,
+                vertical: kVerticalPadding,
+              ),
+              child: Text('Actions rapides', style: kTitleSideBar),
             ),
-            ListTile(title: Text('Créer un groupe', style: kTextSideBar,)),
+            ListTile(title: Text('Créer un groupe', style: kTextSideBar)),
+            ListTile(title: Text('Inviter une personne', style: kTextSideBar)),
             ListTile(
-              title: Text('Inviter une personne', style: kTextSideBar,),
+              title: Text('Ajouter une transaction', style: kTextSideBar),
             ),
             ListTile(
-              title: Text('Ajouter une transaction', style: kTextSideBar,),
+              title: GestureDetector(
+                onTap: () async {
+                  await FirebaseAuth.instance.signOut().then((value) => {
+                  Navigator.pushNamed(
+                  context, LoginScreen.routeName)
+                  });
+                },
+                child: Text('Je me déconnecte', style: kTextSideBar),
+              ),
             ),
-            ListTile(title: Text('Je me déconnecte', style: kTextSideBar,)),
           ],
         ),
       ),
