@@ -1,0 +1,17 @@
+{
+  "login": "Se connecter",
+  "register": "S’inscrire",
+  "withoutAccount": "Continuer sans compte",
+  "carousel1": "Gérez votre budget !",
+  "carousel2": "Gardez le contrôle de vos dépenses au quotidien.",
+  "carousel3": "Partagez les frais facilement entre amis ou en famille.",
+  "carousel4": "Suivez vos économies et atteignez vos objectifs financiers.",
+  "mail": "Adresse e-mail",
+  "mailLabel": "Entrez votre adresse e-mail",
+  "firstname": "Prénom",
+  "firstnameLabel": "Entrez votre prénom",
+  "lastname": "Nom",
+  "lastnameLabel": "Entrez votre nom",
+  "password": "Mot de passe",
+  "passwordLabel": "Entrez votre mot de passe"
+}

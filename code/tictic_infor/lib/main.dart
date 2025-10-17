@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tictic_infor/l10n/app_localizations.dart';
 import 'package:tictic_infor/router/router.dart';
 import 'package:tictic_infor/screens/welcome_screen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'TicTic',
       localizationsDelegates: [
+        AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,

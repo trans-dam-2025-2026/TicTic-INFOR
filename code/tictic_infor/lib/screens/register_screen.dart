@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:tictic_infor/l10n/app_localizations.dart';
 import 'package:tictic_infor/screens/home_screen.dart';
 import 'package:tictic_infor/styles/images.dart';
 import 'package:tictic_infor/styles/spacings.dart';
@@ -52,36 +53,36 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       Padding(
                         padding: const EdgeInsets.all(kHorizontalPadding),
                         child: TextFormField(
-                          decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                            labelText: 'Enter your firstname',
+                          decoration: InputDecoration(
+                            border: const OutlineInputBorder(),
+                            labelText: AppLocalizations.of(context)!.mailLabel,
                           ),
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.all(kHorizontalPadding),
                         child: TextFormField(
-                          decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                            labelText: 'Enter your lastname',
+                          decoration: InputDecoration(
+                            border: const OutlineInputBorder(),
+                            labelText: AppLocalizations.of(context)!.lastnameLabel,
                           ),
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.all(kHorizontalPadding),
                         child: TextFormField(
-                          decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                            labelText: 'Enter your mail',
+                          decoration: InputDecoration(
+                            border: const OutlineInputBorder(),
+                            labelText: AppLocalizations.of(context)!.mailLabel,
                           ),
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.all(kHorizontalPadding),
                         child: TextFormField(
-                          decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                            labelText: 'Enter your password',
+                          decoration: InputDecoration(
+                            border: const OutlineInputBorder(),
+                            labelText: AppLocalizations.of(context)!.passwordLabel,
                           ),
                         ),
                       ),
@@ -89,7 +90,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         onTap: (){
                           Navigator.pushNamed(context, HomeScreen.routeName); // Renvoyer vers le onboarding la première fois
                         },
-                        label: 'S’inscrire',
+                        label: AppLocalizations.of(context)!.register,
                         status: 'main',
                       ),
                     ],

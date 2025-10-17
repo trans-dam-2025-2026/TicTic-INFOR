@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:tictic_infor/l10n/app_localizations.dart';
 import 'package:tictic_infor/screens/home_screen.dart';
 import 'package:tictic_infor/screens/login_screen.dart';
 import 'package:tictic_infor/screens/register_screen.dart';
@@ -43,7 +44,7 @@ class WelcomeScreen extends StatelessWidget {
               onTap: () => {
                 Navigator.pushNamed(context, HomeScreen.routeName)
               },
-              label: 'Continuer sans compte',
+              label: AppLocalizations.of(context)!.withoutAccount,
               status: 'main',
             ),
             Line(),
@@ -56,7 +57,7 @@ class WelcomeScreen extends StatelessWidget {
                     onTap: () => {
                       Navigator.pushNamed(context, LoginScreen.routeName)
                     },
-                    label: 'Se connecter',
+                    label: AppLocalizations.of(context)!.login,
                     status: 'secondary',
                   ),
                   SizedBox(width: 24,),
@@ -64,7 +65,7 @@ class WelcomeScreen extends StatelessWidget {
                     onTap: () => {
                       Navigator.pushNamed(context, RegisterScreen.routeName)
                     },
-                    label: 'Créer un compte',
+                    label: AppLocalizations.of(context)!.register,
                     status: 'secondary',
                   ),
                 ],

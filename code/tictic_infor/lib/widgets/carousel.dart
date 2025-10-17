@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tictic_infor/l10n/app_localizations.dart';
 import 'package:tictic_infor/styles/colors.dart';
 import 'package:tictic_infor/styles/sizes.dart';
 import 'package:tictic_infor/styles/spacings.dart';
@@ -12,11 +13,11 @@ class Carousel extends StatefulWidget {
 }
 
 class _CarouselState extends State<Carousel> {
-  final _items = [
-    '0Gérez votre budget!',
-    '1L’harmonie financière dans vos groupes, en toute simplicité !.',
-    '2L’harmonie financière dans vos groupes, en toute simplicité !.',
-    '3L’harmonie financière dans vos groupes, en toute simplicité !.',
+  late final _items = [
+    AppLocalizations.of(context)!.carousel1,
+    AppLocalizations.of(context)!.carousel2,
+    AppLocalizations.of(context)!.carousel3,
+    AppLocalizations.of(context)!.carousel4,
   ];
 
   final PageController controller = PageController();
