@@ -46,6 +46,7 @@ class WelcomeScreen extends StatelessWidget {
                 ),
               ),
               SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
                     CustomButton(
@@ -53,6 +54,16 @@ class WelcomeScreen extends StatelessWidget {
                       isPrimary: false,
                       onTap: () {
                         Navigator.pushNamed(context, LoginScreen.routeName);
+                      },
+                    ),
+                    SizedBox(
+                      width: kHorizontalPaddingL,
+                    ),
+                    CustomButton(
+                      label: 'S’inscrire',
+                      isPrimary: false,
+                      onTap: () {
+                        Navigator.pushNamed(context, RegisterScreen.routeName);
                       },
                     ),
                     SizedBox(
