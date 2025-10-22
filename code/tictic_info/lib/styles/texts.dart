@@ -15,3 +15,18 @@ const TextStyle kButtonText = TextStyle(
   color: kLightTextColor,
   fontWeight: FontWeight.w600,
 );
+
+const TextStyle kLinkRouteLabel = TextStyle(
+    fontSize: 18,
+    fontFamily: 'Montserrat',
+    color: kMainColor,
+    fontStyle: FontStyle.italic,
+);
+
+const TextStyle kLinkRoute = TextStyle(
+    fontSize: 18,
+    fontFamily: 'Montserrat',
+    color: kMainColor,
+    fontStyle: FontStyle.italic,
+    decoration: TextDecoration.underline
+);
