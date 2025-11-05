@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:tictic_info/l10n/app_localizations.dart';
 import 'package:tictic_info/screens/home_screen.dart';
 import 'package:tictic_info/screens/register_screen.dart';
 import 'package:tictic_info/styles/size.dart';
@@ -58,14 +59,26 @@ class _LoginScreenState extends State<LoginScreen> {
                         label: 'Adresse mail',
                         hint: 'Ex: johndoe@example.com',
                         controller: emailController,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Veuillez entrer votre mail';
+                          }
+                          return null;
+                        },
                       ),
                       TextInputPasswordCustom(
                         label: 'Mot de passe',
                         hint: 'Ex: *********',
                         controller: passwordController,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Veuillez entrer votre mot de passe';
+                          }
+                          return null;
+                        },
                       ),
                       CustomButton(
-                        label: 'Se connecter',
+                        label: AppLocalizations.of(context)!.login,
                         isPrimary: true,
                         onTap: () {
                           if (_formKey.currentState!.validate()) {

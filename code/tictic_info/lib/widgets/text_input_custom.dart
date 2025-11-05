@@ -9,11 +9,13 @@ class TextInputCustom extends StatelessWidget {
     required this.controller,
     required this.label,
     required this.hint,
+    required this.validator,
   });
 
   final TextEditingController controller;
   final String label;
   final String hint;
+  final FormFieldValidator<String> validator;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +23,7 @@ class TextInputCustom extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: kVerticalPadding),
       child: TextFormField(
         controller: controller,
-        validator: (String? value) {},
+        validator: validator,
         decoration: InputDecoration(
           labelText: label,
           labelStyle: TextStyle(

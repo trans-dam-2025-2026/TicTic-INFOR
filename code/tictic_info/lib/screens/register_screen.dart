@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tictic_info/screens/home_screen.dart';
@@ -41,13 +42,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                SizedBox(height: kSizeBetWeenElements,),
+                SizedBox(height: kSizeBetWeenElements),
                 WBackButton(),
                 Center(
                   child: SvgPicture.asset(
                     'assets/icons/logo.svg',
                     width:
-                        MediaQuery.of(context).size.width / kLogoWidthSubdiviser,
+                        MediaQuery.of(context).size.width /
+                        kLogoWidthSubdiviser,
                   ),
                 ),
                 SizedBox(height: kSizeBetWeenElements),
@@ -63,42 +65,69 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           label: 'Prénom',
                           hint: 'Ex: John',
                           controller: firstnameController,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Veuillez entrer votre prénom';
+                            }
+                            return null;
+                          },
                         ),
                         TextInputCustom(
                           label: 'Nom de famille',
                           hint: 'Ex: Doe',
                           controller: lastnameController,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Veuillez entrer votre nom de famille';
+                            }
+                            return null;
+                          },
                         ),
                         TextInputCustom(
                           label: 'Adresse mail',
                           hint: 'Ex: johndoe@example.com',
                           controller: emailController,
-                        ),
-                        TextInputCustom(
-                          label: 'Adresse mail',
-                          hint: 'Ex: johndoe@example.com',
-                          controller: emailController,
-                        ),
-                        TextInputCustom(
-                          label: 'Adresse mail',
-                          hint: 'Ex: johndoe@example.com',
-                          controller: emailController,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Veuillez entrer votre mail';
+                            }
+                            return null;
+                          },
                         ),
                         TextInputPasswordCustom(
                           label: 'Mot de passe',
                           hint: 'Ex: *********',
                           controller: passwordController,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Veuillez entrer votre mot de passe';
+                            }
+                            return null;
+                          },
                         ),
                         CustomButton(
                           label: 'Créer mon compte',
                           isPrimary: true,
-                          onTap: () {
+                          onTap: () async {
                             if (_formKey.currentState!.validate()) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(content: Text('Processing Data')),
-                              );
-
-                              Navigator.pushNamed(context, HomeScreen.routeName);
+                              try {
+                                await FirebaseAuth.instance
+                                    .createUserWithEmailAndPassword(
+                                      email: emailController.text,
+                                      password: passwordController.text,
+                                    )
+                                    .then((value) {
+                                      Navigator.pushNamed(context, HomeScreen.routeName,);
+                                    });
+                              } on FirebaseAuthException catch (e) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    showCloseIcon: true,
+                                    duration: const Duration(seconds: 10),
+                                    content: Text(e.message!),
+                                  ),
+                                );
+                              }
                             }
                           },
                         ),
@@ -109,12 +138,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 SizedBox(height: kSizeBetWeenElements),
                 LinkToRouteLabel(
                   label: 'J’ai déjà un compte.',
-                    link: 'Je me connecte !',
-                    onTap: () {
-                      Navigator.pushNamed(context, LoginScreen.routeName);
-                    },
+                  link: 'Je me connecte !',
+                  onTap: () {
+                    Navigator.pushNamed(context, LoginScreen.routeName);
+                  },
                 ),
-                SizedBox(height: kSizeBetWeenElements,),
+                SizedBox(height: kSizeBetWeenElements),
               ],
             ),
           ),

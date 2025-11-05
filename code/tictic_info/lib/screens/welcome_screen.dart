@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:tictic_info/l10n/app_localizations.dart';
 import 'package:tictic_info/screens/home_screen.dart';
 import 'package:tictic_info/screens/login_screen.dart';
 import 'package:tictic_info/screens/register_screen.dart';
-import 'package:tictic_info/styles/size.dart';
-import 'package:tictic_info/styles/spacings.dart';
-import 'package:tictic_info/widgets/custom_button.dart';
+import 'package:tictic_info/styles/images.dart';
+import 'package:tictic_info/widgets/main_button.dart';
 import 'package:tictic_info/widgets/carousel.dart';
+import 'package:tictic_info/widgets/line.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -17,74 +18,61 @@ class WelcomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: DecoratedBox(
+        // Pour initier le fond
         decoration: BoxDecoration(
+          // Pour mettre un fond type couleur ou autre
           image: DecorationImage(
-            image: AssetImage('assets/img/back1.png'),
-            fit: BoxFit.cover,
+            // Pour mettre une image
+            image: AssetImage('assets/img/back1.png'), // Le chemin de l'image
+            fit: BoxFit.cover, // La façon dont l'image doit fit dans l'écran
           ),
         ),
-        child: SafeArea(
-          child: Column(
-            children: [
-              Spacer(),
-              Center(
-                child: SvgPicture.asset(
-                  'assets/icons/logo.svg',
-                  width:
-                      MediaQuery.of(context).size.width / kLogoWidthSubdiviser,
-                ),
+        child: Column(
+          children: [
+            Spacer(),
+            Align(
+              alignment: Alignment.topCenter,
+              child: SvgPicture.asset(
+                'assets/icons/logo.svg',
+                width: MediaQuery.of(context).size.width * kLogoRatioPercentage,
               ),
-              Spacer(),
-              Carousel(),
-              Spacer(),
-              Center(
-                child: CustomButton(
-                  label: 'Continuer sans compte',
-                  onTap: () {
-                    Navigator.pushNamed(context, HomeScreen.routeName);
-                  },
-                ),
+            ),
+            Spacer(),
+            Carousel(),
+            Spacer(),
+            MainButton(
+              onTap: () => {
+                Navigator.pushNamed(context, HomeScreen.routeName)
+              },
+              label: AppLocalizations.of(context)!.withoutAccount,
+              status: 'main',
+            ),
+            Line(),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  MainButton(
+                    onTap: () => {
+                      Navigator.pushNamed(context, LoginScreen.routeName)
+                    },
+                    label: AppLocalizations.of(context)!.login,
+                    status: 'secondary',
+                  ),
+                  SizedBox(width: 24,),
+                  MainButton(
+                    onTap: () => {
+                      Navigator.pushNamed(context, RegisterScreen.routeName)
+                    },
+                    label: AppLocalizations.of(context)!.register,
+                    status: 'secondary',
+                  ),
+                ],
               ),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: [
-                    CustomButton(
-                      label: 'Se connecter',
-                      isPrimary: false,
-                      onTap: () {
-                        Navigator.pushNamed(context, LoginScreen.routeName);
-                      },
-                    ),
-                    SizedBox(
-                      width: kHorizontalPaddingL,
-                    ),
-                    CustomButton(
-                      label: 'S’inscrire',
-                      isPrimary: false,
-                      onTap: () {
-                        Navigator.pushNamed(context, RegisterScreen.routeName);
-                      },
-                    ),
-                    SizedBox(
-                      width: kHorizontalPaddingL,
-                    ),
-                    CustomButton(
-                      label: 'S’inscrire',
-                      isPrimary: false,
-                      onTap: () {
-                        Navigator.pushNamed(context, RegisterScreen.routeName);
-                      },
-                    ),
-                  ],
-                ),
-              ),
-              // Carousel
-              // Button
-              // Row -> Line - Text - Line
-              // Row -> Button - Button
-            ],
-          ),
+            ),
+            Spacer(),
+          ],
         ),
       ),
     );

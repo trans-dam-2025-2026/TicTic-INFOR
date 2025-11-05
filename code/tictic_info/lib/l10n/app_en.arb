@@ -1,0 +1,17 @@
+{
+  "login": "Log in",
+  "register": "Sign up",
+  "withoutAccount": "Continue without an account",
+  "carousel1": "Manage your budget!",
+  "carousel2": "Keep control of your daily expenses.",
+  "carousel3": "Easily split costs with friends or family.",
+  "carousel4": "Track your savings and reach your financial goals.",
+  "mail": "Email address",
+  "mailLabel": "Enter your email address",
+  "firstname": "First name",
+  "firstnameLabel": "Enter your first name",
+  "lastname": "Last name",
+  "lastnameLabel": "Enter your last name",
+  "password": "Password",
+  "passwordLabel": "Enter your password"
+}

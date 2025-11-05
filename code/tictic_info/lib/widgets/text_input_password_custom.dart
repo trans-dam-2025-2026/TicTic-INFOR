@@ -9,11 +9,14 @@ class TextInputPasswordCustom extends StatefulWidget {
     required this.controller,
     required this.label,
     required this.hint,
+    required this.validator,
   });
 
   final TextEditingController controller;
   final String label;
   final String hint;
+
+  final FormFieldValidator<String> validator;
 
   @override
   State<TextInputPasswordCustom> createState() =>
@@ -30,7 +33,7 @@ class _TextInputPasswordCustomState extends State<TextInputPasswordCustom> {
       child: TextFormField(
         controller: widget.controller,
         obscureText: passwordNotVisible,
-        validator: (String? value) {},
+        validator: widget.validator,
         decoration: InputDecoration(
           labelText: widget.label,
           labelStyle: TextStyle(

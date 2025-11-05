@@ -1,0 +1,1 @@
+const kLogoRatioPercentage = 0.4;
