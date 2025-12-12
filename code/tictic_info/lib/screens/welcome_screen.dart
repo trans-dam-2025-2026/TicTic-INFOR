@@ -1,0 +1,80 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:tictic_info/l10n/app_localizations.dart';
+import 'package:tictic_info/screens/home_screen.dart';
+import 'package:tictic_info/screens/login_screen.dart';
+import 'package:tictic_info/screens/register_screen.dart';
+import 'package:tictic_info/styles/images.dart';
+import 'package:tictic_info/widgets/main_button.dart';
+import 'package:tictic_info/widgets/carousel.dart';
+import 'package:tictic_info/widgets/line.dart';
+
+class WelcomeScreen extends StatelessWidget {
+  const WelcomeScreen({super.key});
+
+  static const String routeName = '/';
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: DecoratedBox(
+        // Pour initier le fond
+        decoration: BoxDecoration(
+          // Pour mettre un fond type couleur ou autre
+          image: DecorationImage(
+            // Pour mettre une image
+            image: AssetImage('assets/img/back1.png'), // Le chemin de l'image
+            fit: BoxFit.cover, // La façon dont l'image doit fit dans l'écran
+          ),
+        ),
+        child: Column(
+          children: [
+            Spacer(),
+            Align(
+              alignment: Alignment.topCenter,
+              child: SvgPicture.asset(
+                'assets/icons/logo.svg',
+                width: MediaQuery.of(context).size.width * kLogoRatioPercentage,
+              ),
+            ),
+            Spacer(),
+            Carousel(),
+            Spacer(),
+            MainButton(
+              onTap: () => {
+                Navigator.pushNamed(context, HomeScreen.routeName)
+              },
+              label: AppLocalizations.of(context)!.withoutAccount,
+              status: 'main',
+            ),
+            Line(),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  MainButton(
+                    onTap: () => {
+                      Navigator.pushNamed(context, LoginScreen.routeName)
+                    },
+                    label: AppLocalizations.of(context)!.login,
+                    status: 'secondary',
+                  ),
+                  SizedBox(width: 24,),
+                  MainButton(
+                    onTap: () => {
+                      Navigator.pushNamed(context, RegisterScreen.routeName)
+                    },
+                    label: AppLocalizations.of(context)!.register,
+                    status: 'secondary',
+                  ),
+                ],
+              ),
+            ),
+            Spacer(),
+          ],
+        ),
+      ),
+    );
+  }
+}
